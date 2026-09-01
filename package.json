@@ -4,7 +4,9 @@
   "description": "Landing page dla Restauracji Nowy Sad & Catering Łódź",
   "scripts": {
     "dev": "live-server src --port=5500 --wait=100",
-    "start": "live-server src --port=5500 --wait=100"
+    "start": "live-server src --port=5500 --wait=100",
+    "push": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1"
   },
   "keywords": [
     "catering",
