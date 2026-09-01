@@ -1,0 +1,19 @@
+{
+  "name": "catering-nowe-sady",
+  "version": "1.0.0",
+  "description": "Landing page dla Restauracji Nowy Sad & Catering Łódź",
+  "scripts": {
+    "dev": "live-server src --port=5500 --wait=100",
+    "start": "live-server src --port=5500 --wait=100"
+  },
+  "keywords": [
+    "catering",
+    "restauracja",
+    "lodz"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
