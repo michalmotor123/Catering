@@ -2233,6 +2233,56 @@ body.catering-dark-theme .modal-close:hover {
   }
 }
 
+/* ==========================================================================
+   EFEKT SCROLL REVEAL (PŁYNNE POJAWIANIE SIĘ SEKCJI PODCZAS PRZEWIJANIA)
+   ========================================================================== */
+.js-reveal-enabled .reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Warianty animacji */
+.js-reveal-enabled .reveal.reveal-fade {
+  transform: translateY(0);
+}
+
+.js-reveal-enabled .reveal.reveal-scale {
+  transform: scale(0.95);
+}
+
+.js-reveal-enabled .reveal.reveal-left {
+  transform: translateX(-35px);
+}
+
+.js-reveal-enabled .reveal.reveal-right {
+  transform: translateX(35px);
+}
+
+/* Stan po pojawieniu się w widoku użytkownika */
+.js-reveal-enabled .reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Sekwencyjne opóźnienia ręczne */
+.reveal-delay-1 { transition-delay: 0.1s !important; }
+.reveal-delay-2 { transition-delay: 0.2s !important; }
+.reveal-delay-3 { transition-delay: 0.3s !important; }
+.reveal-delay-4 { transition-delay: 0.4s !important; }
+
+/* Dostępność - respektowanie preferencji redukcji ruchu w systemie (a11y) */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal-enabled .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
 
 
 

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initCateringModal();
   initScrollToTop();
+  initScrollReveal();
 });
 
 /* --- 1. NAWIGACJA MOBILNA --- */
@@ -237,6 +238,83 @@ function initScrollToTop() {
     });
   });
 }
+
+/* --- 6. PŁYNNY EFEKT POJAWIANIA SIĘ SEKCJI (SCROLL REVEAL) --- */
+function initScrollReveal() {
+  // Włączamy flagę stylów dla Scroll Reveal gdy JS działa
+  document.documentElement.classList.add('js-reveal-enabled');
+
+  // Selektory elementów do automatycznego objęcia płynną animacją pojawiania się
+  const targetSelectors = [
+    '.hero-content',
+    '.section',
+    '.panoramic-banner',
+    '.section-divider-typography',
+    '.section-header',
+    '.section-subtitle',
+    '.three-col-grid > *',
+    '.features-grid > *',
+    '.catering-grid > *',
+    '.photo-showcase > *',
+    '.lokale-grid > *',
+    '.opinie-grid > *',
+    '.kontakt-grid > *',
+    '.banner-content',
+    '.catering-hero-content',
+    '.form-card',
+    '.faq-item',
+    '.footer-top'
+  ];
+
+  const elementsToReveal = new Set(document.querySelectorAll('.reveal'));
+
+  targetSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      // Wyklucz nagłówek strony oraz elementy ze specjalną klasą no-reveal
+      if (!el.classList.contains('no-reveal') && !el.closest('header')) {
+        el.classList.add('reveal');
+        elementsToReveal.add(el);
+      }
+    });
+  });
+
+  // Dodanie sekwencyjnego opóźnienia (stagger) dla elementów w siatkach
+  const gridContainers = document.querySelectorAll(
+    '.three-col-grid, .features-grid, .catering-grid, .photo-showcase, .lokale-grid, .opinie-grid, .kontakt-grid'
+  );
+  
+  gridContainers.forEach(grid => {
+    const children = Array.from(grid.children);
+    children.forEach((child, index) => {
+      const delay = Math.min((index % 4) * 0.12, 0.48);
+      child.style.transitionDelay = `${delay}s`;
+    });
+  });
+
+  // Wsparcie dla starszych przeglądarek bez IntersectionObserver
+  if (!('IntersectionObserver' in window)) {
+    elementsToReveal.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.1
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  elementsToReveal.forEach(el => revealObserver.observe(el));
+}
+
 
 
 
