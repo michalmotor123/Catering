@@ -1148,6 +1148,96 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
+/* --- AMBIENT GLASSMORPHISM STYLES FOR LOCATIONS --- */
+.ambient-glass-card {
+  background: #ffffff;
+  border: 1px solid rgba(201, 151, 56, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ambient-glass-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 151, 56, 0.5);
+  box-shadow: 0 24px 50px rgba(201, 151, 56, 0.14), 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.location-card-badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.status-open {
+  background: rgba(18, 22, 18, 0.88) !important;
+  color: #7ef09d !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(126, 240, 157, 0.35) !important;
+}
+
+.status-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #34d399;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 14px #34d399; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.badge-location {
+  background: rgba(26, 26, 26, 0.82) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.location-ambient-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.ambient-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(201, 151, 56, 0.09);
+  color: #b37e24;
+  padding: 4px 11px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 151, 56, 0.22);
+}
+
+.btn-glow {
+  box-shadow: 0 4px 15px rgba(201, 151, 56, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 6px 20px rgba(201, 151, 56, 0.55);
+  transform: translateY(-2px);
+}
+
 .location-card:hover,
 .location-card-link-wrapper:hover .location-card {
   transform: translateY(-6px);
