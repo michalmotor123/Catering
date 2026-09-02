@@ -183,7 +183,6 @@
 
         <div class="hero-footer-info">
           <p class="hero-address">ul. Nowe Sady 11, 94-102 Łódź</p>
-          <a href="tel:501474020" class="hero-phone">501 474 020</a>
         </div>
       </div>
 
@@ -450,6 +449,10 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="menu-cta-container" style="display: flex; justify-content: center; align-items: center; margin-top: 40px; margin-bottom: 50px; text-align: center;">
+        <button type="button" id="openFullMenuBtn" class="btn btn-outline-dark">Zobacz pełne menu</button>
       </div>
 
       <!-- Photo Showcase 2 -->
@@ -859,6 +862,27 @@
         </svg>
       </span>
     </a>
+  </div>
+
+  <!-- ==================== MODAL PEŁNEGO MENU ==================== -->
+  <div class="modal-overlay" id="fullMenuModal" aria-hidden="true" role="dialog">
+    <div class="modal-container">
+      <button type="button" class="modal-close" id="fullMenuModalClose" aria-label="Zamknij okno">&times;</button>
+      <span class="modal-category-badge">KARTA DAŃ & CATERING</span>
+      <h3 class="modal-title">PEŁNE MENU - STACJA GASTRONOMIA</h3>
+      <div class="modal-divider"></div>
+      <p style="font-size: 0.92rem; color: var(--color-light-muted); margin-bottom: 24px; font-weight: 300;">
+        Poniżej znajduje się pełne zestawienie naszych dań restauracyjnych, zestawów lunchowych oraz specjałów cateringowych.
+      </p>
+      
+      <div class="modal-items-list" id="fullMenuList">
+        <!-- Wypełniane dynamicznie przez JS -->
+      </div>
+
+      <div style="text-align: center; margin-top: 28px; border-top: 1px solid var(--color-light-border); padding-top: 24px;">
+        <button type="button" class="btn btn-accent" id="closeFullMenuActionBtn">ZAMKNIJ MENU</button>
+      </div>
+    </div>
   </div>
 
 </body>
