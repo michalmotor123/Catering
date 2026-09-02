@@ -89,8 +89,81 @@ h1, h2, h3, h4 {
 }
 
 .section {
+  position: relative;
+  overflow: hidden;
   padding: 80px 0;
   background-color: var(--color-white);
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- DEKORACJE BOTANICZNE TŁA (HERB LINE ART) --- */
+.botanical-decor {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  color: var(--color-accent);
+  opacity: 0.18;
+  transition: opacity var(--transition-fast);
+}
+
+.botanical-decor svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.botanical-top-right {
+  top: -15px;
+  right: -15px;
+  width: clamp(220px, 26vw, 380px);
+}
+
+.botanical-bottom-left {
+  bottom: -15px;
+  left: -15px;
+  width: clamp(220px, 26vw, 380px);
+}
+
+.botanical-bottom-right {
+  bottom: -15px;
+  right: -15px;
+  width: clamp(200px, 24vw, 340px);
+}
+
+.botanical-top-left {
+  top: -15px;
+  left: -15px;
+  width: clamp(200px, 24vw, 340px);
+}
+
+@media (max-width: 768px) {
+  .botanical-decor {
+    opacity: 0.12;
+  }
+  .botanical-top-right {
+    width: clamp(140px, 36vw, 220px);
+    top: -10px;
+    right: -10px;
+  }
+  .botanical-bottom-left {
+    width: clamp(140px, 36vw, 220px);
+    bottom: -10px;
+    left: -10px;
+  }
+  .botanical-bottom-right {
+    width: clamp(130px, 34vw, 200px);
+    bottom: -10px;
+    right: -10px;
+  }
 }
 
 .section-header {
@@ -1795,6 +1868,8 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 
 /* Główna Sekcja Oferty Cateringowej w Trybie Dark */
 .catering-offers-section {
+  position: relative;
+  overflow: hidden;
   padding: 90px 0;
   background-color: #141414;
   background: radial-gradient(ellipse at 50% 0%, #1c1c1c 0%, #111111 75%);
@@ -1979,6 +2054,8 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 
 /* Formularz Zapytania Cateringowego - Elegancki Ciemny Boks */
 .catering-inquiry-section {
+  position: relative;
+  overflow: hidden;
   padding: 100px 0;
   background-color: var(--color-dark-bg);
   color: var(--color-white);
@@ -1986,6 +2063,8 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 }
 
 .inquiry-box {
+  position: relative;
+  overflow: hidden;
   max-width: 840px;
   margin: 0 auto;
   background-color: var(--color-dark-card);
@@ -2483,92 +2562,6 @@ body.catering-dark-theme .modal-close:hover {
 .reveal-delay-3 { transition-delay: 0.3s !important; }
 .reveal-delay-4 { transition-delay: 0.4s !important; }
 
-  padding-left: 16px;
-  padding-right: 4px;
-}
-
-.floating-social-link .social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  color: var(--color-accent);
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.floating-social-link:hover .social-icon,
-.floating-social-link:focus-visible .social-icon {
-  color: #111111;
-  transform: scale(1.1);
-}
-
-/* Responsywność dla ekranów mobilnych */
-@media (max-width: 768px) {
-  .floating-socials {
-    top: auto;
-    bottom: 85px;
-    transform: none;
-    gap: 8px;
-  }
-
-  .floating-social-link {
-    height: 40px;
-  }
-
-  .floating-social-link .social-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .floating-social-link:hover .social-label,
-  .floating-social-link:focus-visible .social-label {
-    font-size: 0.75rem;
-    padding-left: 12px;
-  }
-}
-
-/* ==========================================================================
-   EFEKT SCROLL REVEAL (PŁYNNE POJAWIANIE SIĘ SEKCJI PODCZAS PRZEWIJANIA)
-   ========================================================================== */
-.js-reveal-enabled .reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-/* Warianty animacji */
-.js-reveal-enabled .reveal.reveal-fade {
-  transform: translateY(0);
-}
-
-.js-reveal-enabled .reveal.reveal-scale {
-  transform: scale(0.95);
-}
-
-.js-reveal-enabled .reveal.reveal-left {
-  transform: translateX(-35px);
-}
-
-.js-reveal-enabled .reveal.reveal-right {
-  transform: translateX(35px);
-}
-
-/* Stan po pojawieniu się w widoku użytkownika */
-.js-reveal-enabled .reveal.is-revealed {
-  opacity: 1;
-  transform: translateY(0) translateX(0) scale(1);
-}
-
-/* Sekwencyjne opóźnienia ręczne */
-.reveal-delay-1 { transition-delay: 0.1s !important; }
-.reveal-delay-2 { transition-delay: 0.2s !important; }
-.reveal-delay-3 { transition-delay: 0.3s !important; }
-.reveal-delay-4 { transition-delay: 0.4s !important; }
-
 /* Dostępność - respektowanie preferencji redukcji ruchu w systemie (a11y) */
 @media (prefers-reduced-motion: reduce) {
   .js-reveal-enabled .reveal {
@@ -2577,127 +2570,6 @@ body.catering-dark-theme .modal-close:hover {
     transition: none !important;
   }
 }
-
-/* ==========================================================================
-   DELIKATNE ELEGACKIE BOTANICZNE TŁA ZIÓŁ I ROŚLIN (SKETCH BACKGROUNDS)
-   ========================================================================== */
-.section,
-.section-about,
-.section-features,
-.section-menu,
-.section-locations,
-.section-testimonials {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Subtelny szkic botaniczny - gałązka oliwna / rozmaryn w prawym górnym rogu */
-.section-about::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: -50px;
-  width: 420px;
-  height: 480px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='none' stroke='%238c7355' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M350 20C280 100 200 240 180 480' /%3E%3Cpath d='M330 60c-25-10-45 5-50 25 15 15 35 15 50-25z' /%3E%3Cpath d='M290 120c-30-5-50 15-50 35 20 10 40 5 50-35z' /%3E%3Cpath d='M250 190c-35 0-55 20-50 45 25 5 45-10 50-45z' /%3E%3Cpath d='M220 270c-35 5-50 30-40 50 25 0 40-20 40-50z' /%3E%3Cpath d='M195 360c-30 10-40 35-30 55 20 0 35-25 30-55z' /%3E%3Cpath d='M320 85c20-15 45-10 50 10-15 20-35 15-50-10z' /%3E%3Cpath d='M275 155c25-10 45 0 45 20-20 15-35 10-45-20z' /%3E%3Cpath d='M235 235c25-5 40 10 35 30-20 10-35 0-35-30z' /%3E%3Cpath d='M205 315c20 0 35 15 30 30-15 10-30 0-30-30z' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-/* Subtelny szkic botaniczny - motyw ziół w lewym dolnym rogu */
-.section-about::after {
-  content: "";
-  position: absolute;
-  bottom: -50px;
-  left: -50px;
-  width: 380px;
-  height: 440px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='none' stroke='%238c7355' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M50 480C120 380 180 220 250 20' /%3E%3Cpath d='M70 420c25 5 45-10 45-30-20-10-40 0-45 30z' /%3E%3Cpath d='M110 340c30 0 50-15 45-40-20-5-40 10-45 40z' /%3E%3Cpath d='M150 260c30-10 45-25 35-50-20 0-35 20-35 50z' /%3E%3Cpath d='M190 170c25-15 35-35 20-55-15 5-25 25-20 55z' /%3E%3Cpath d='M80 440c-20-15-40-10-45 10 15 15 35 10 45-10z' /%3E%3Cpath d='M125 365c-25-10-45 0-40 20 20 15 35 5 40-20z' /%3E%3Cpath d='M165 285c-25-5-40 10-35 30 20 10 35 0 35-30z' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-/* Motyw ziół dla sekcji Atuty (Features) */
-.section-features::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -60px;
-  transform: translateY(-50%);
-  width: 350px;
-  height: 450px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.065;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 450' fill='none' stroke='%238c7355' stroke-width='1.2'%3E%3Cpath d='M40 430 Q120 250 260 20' /%3E%3Ccircle cx='90' cy='330' r='12' /%3E%3Ccircle cx='140' cy='250' r='16' /%3E%3Ccircle cx='190' cy='160' r='14' /%3E%3Cpath d='M80 320 Q40 290 30 330 Q60 360 90 340' /%3E%3Cpath d='M130 240 Q90 200 75 240 Q110 280 145 255' /%3E%3Cpath d='M180 150 Q150 110 130 145 Q165 185 195 165' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.section-features::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -60px;
-  transform: translateY(-50%);
-  width: 350px;
-  height: 450px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.065;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 450' fill='none' stroke='%238c7355' stroke-width='1.2'%3E%3Cpath d='M260 430 Q180 250 40 20' /%3E%3Ccircle cx='210' cy='330' r='12' /%3E%3Ccircle cx='160' cy='250' r='16' /%3E%3Ccircle cx='110' cy='160' r='14' /%3E%3Cpath d='M220 320 Q260 290 270 330 Q240 360 210 340' /%3E%3Cpath d='M170 240 Q210 200 225 240 Q190 280 155 255' /%3E%3Cpath d='M120 150 Q150 110 170 145 Q135 185 105 165' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-/* Motyw ziół dla sekcji Menu */
-.section-menu::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: -40px;
-  width: 400px;
-  height: 460px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.065;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='none' stroke='%238c7355' stroke-width='1.2'%3E%3Cpath d='M20 20 C100 120 180 300 350 480' /%3E%3Cpath d='M50 70 C10 100 10 140 60 140 C100 140 90 90 50 70 Z' /%3E%3Cpath d='M120 160 C70 190 70 240 130 230 C170 220 160 170 120 160 Z' /%3E%3Cpath d='M200 270 C160 310 170 360 220 350 C260 330 240 280 200 270 Z' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.section-menu::after {
-  content: "";
-  position: absolute;
-  bottom: -40px;
-  right: -40px;
-  width: 400px;
-  height: 460px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.065;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='none' stroke='%238c7355' stroke-width='1.2'%3E%3Cpath d='M380 20 C300 120 220 300 50 480' /%3E%3Cpath d='M350 70 C390 100 390 140 340 140 C300 140 310 90 350 70 Z' /%3E%3Cpath d='M280 160 C330 190 330 240 270 230 C230 220 240 170 280 160 Z' /%3E%3Cpath d='M200 270 C240 310 230 360 180 350 C140 330 160 280 200 270 Z' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-/* Zapewnienie, że zawartość pojemnika sekcji jest wyżej niż tła botaniczne */
-.section .container,
-.section-about .container,
-.section-features .container,
-.section-menu .container,
-.section-locations .container,
-.section-testimonials .container {
-  position: relative;
-  z-index: 1;
-}
-
 
 
 
