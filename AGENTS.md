@@ -198,8 +198,7 @@ Podczas generowania kodu strony dla klienta:
 4. **Dbaj o pełną samodzielność plików** – `style.css` musi posiadać kompletną definicję wszystkich klas użytych w `index.html`.
 5. **Używaj wektorowych ikon SVG (inline)** dla zachowania lekkości i braku konieczności ładowania fontów ikonowych.
 6. **Zapewnij natychmiastową gotowość do publikacji** na dowolnym hostingu statycznym (GitHub Pages z folderem `src` / root, Netlify, Vercel, serwer FTP).
-7. **Automatyczna wersjonacja i publikacja Git:** Po każdej wprowadzonej modyfikacji w kodzie (HTML, CSS, JS) automatycznie wykonuj w terminalu polecenia Git:
-   - `git add .`
-   - `git commit -m "Aktualizacja strony: [krótki opis zmian]"`
-   - `git push origin main` (lub `master`, w zależności od nazwy aktywnej gałęzi)
+7. **Automatyczna wersjonacja i publikacja Git:** Po każdej wprowadzonej modyfikacji w kodzie (HTML, CSS, JS) automatycznie wykonuj pełną procedurę deploymentu (aktualizacja `main` oraz `gh-pages`):
+   - Uruchamiaj skrypt w terminalu: `powershell -ExecutionPolicy Bypass -File ./deploy.ps1 -msg "Aktualizacja strony: [krótki opis zmian]"`
+   - Dzięki temu każda zmiana natychmiast trafia do `main` oraz na gałąź `gh-pages` pod adresem strony online.
    - Rób to automatycznie bez pytania użytkownika o zgodę.
