@@ -1713,6 +1713,16 @@ body.catering-dark-theme .nav-menu.is-open {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+body.catering-dark-theme .nav-menu.is-open .nav-link {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body.catering-dark-theme .nav-menu.is-open .nav-link:hover,
+body.catering-dark-theme .nav-menu.is-open .nav-link.active {
+  color: var(--color-accent);
+}
+
 /* Catering Hero Section */
 .catering-hero-section {
   position: relative;
