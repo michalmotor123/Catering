@@ -2152,10 +2152,11 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 }
 
 .modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
+  position: sticky;
+  top: 16px;
+  float: right;
+  z-index: 10;
+  background: var(--color-white);
   border: 1px solid var(--color-light-border);
   font-size: 1.4rem;
   cursor: pointer;
@@ -2167,6 +2168,9 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
   justify-content: center;
   border-radius: 50%;
   transition: all var(--transition-fast);
+  margin-top: -24px;
+  margin-right: -16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-close:hover {
