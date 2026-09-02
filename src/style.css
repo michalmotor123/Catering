@@ -1263,8 +1263,12 @@ h1, h2, h3, h4 {
   align-items: flex-start;
   gap: 12px;
   font-size: 0.9rem;
-  color: #333333;
+  color: var(--color-light-muted);
   line-height: 1.45;
+}
+
+.location-info-item strong {
+  color: var(--color-light-text);
 }
 
 .location-icon {
