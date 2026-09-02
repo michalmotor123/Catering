@@ -89,81 +89,8 @@ h1, h2, h3, h4 {
 }
 
 .section {
-  position: relative;
-  overflow: hidden;
   padding: 80px 0;
   background-color: var(--color-white);
-}
-
-.container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* --- DEKORACJE BOTANICZNE TŁA (HERB LINE ART) --- */
-.botanical-decor {
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
-  color: var(--color-accent);
-  opacity: 0.18;
-  transition: opacity var(--transition-fast);
-}
-
-.botanical-decor svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.botanical-top-right {
-  top: -15px;
-  right: -15px;
-  width: clamp(220px, 26vw, 380px);
-}
-
-.botanical-bottom-left {
-  bottom: -15px;
-  left: -15px;
-  width: clamp(220px, 26vw, 380px);
-}
-
-.botanical-bottom-right {
-  bottom: -15px;
-  right: -15px;
-  width: clamp(200px, 24vw, 340px);
-}
-
-.botanical-top-left {
-  top: -15px;
-  left: -15px;
-  width: clamp(200px, 24vw, 340px);
-}
-
-@media (max-width: 768px) {
-  .botanical-decor {
-    opacity: 0.12;
-  }
-  .botanical-top-right {
-    width: clamp(140px, 36vw, 220px);
-    top: -10px;
-    right: -10px;
-  }
-  .botanical-bottom-left {
-    width: clamp(140px, 36vw, 220px);
-    bottom: -10px;
-    left: -10px;
-  }
-  .botanical-bottom-right {
-    width: clamp(130px, 34vw, 200px);
-    bottom: -10px;
-    right: -10px;
-  }
 }
 
 .section-header {
@@ -1868,8 +1795,6 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 
 /* Główna Sekcja Oferty Cateringowej w Trybie Dark */
 .catering-offers-section {
-  position: relative;
-  overflow: hidden;
   padding: 90px 0;
   background-color: #141414;
   background: radial-gradient(ellipse at 50% 0%, #1c1c1c 0%, #111111 75%);
@@ -2054,8 +1979,6 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 
 /* Formularz Zapytania Cateringowego - Elegancki Ciemny Boks */
 .catering-inquiry-section {
-  position: relative;
-  overflow: hidden;
   padding: 100px 0;
   background-color: var(--color-dark-bg);
   color: var(--color-white);
@@ -2063,8 +1986,6 @@ body.catering-dark-theme .nav-menu.is-open .nav-link.active {
 }
 
 .inquiry-box {
-  position: relative;
-  overflow: hidden;
   max-width: 840px;
   margin: 0 auto;
   background-color: var(--color-dark-card);
