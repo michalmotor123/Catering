@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initParallax();
   initCateringModal();
+  initFullMenuModal();
   initScrollToTop();
   initScrollReveal();
 });
@@ -213,6 +214,106 @@ function initCateringModal() {
     modal.classList.remove('is-active');
     document.body.style.overflow = '';
   }
+}
+
+/* --- 4B. OBSŁUGA MODALA PEŁNEGO MENU RESTAURACJI & CATERINGU --- */
+function initFullMenuModal() {
+  const openBtn = document.getElementById('openFullMenuBtn');
+  const modal = document.getElementById('fullMenuModal');
+  if (!openBtn || !modal) return;
+
+  const closeBtn = document.getElementById('fullMenuModalClose');
+  const actionCloseBtn = document.getElementById('closeFullMenuActionBtn');
+  const listContainer = document.getElementById('fullMenuList');
+
+  const fullMenuData = [
+    {
+      category: 'LUNCHE & PRZYSTAWKI',
+      items: [
+        { name: 'Bruschetta Klasyczna', price: '24 PLN', desc: 'Chrupiące pieczywo, dojrzałe pomidory, czosnek, świeża bazylia, oliwa extra virgin.' },
+        { name: 'Tatar Wołowy', price: '39 PLN', desc: 'Siekana polędwica wołowa, pikle, szalotka, żółtko, domowe pieczywo rzemieślnicze.' },
+        { name: 'Krem z Pieczonych Pomidorów', price: '22 PLN', desc: 'Aromatyczny krem pomidorowy z pesto bazyliowym i prażonymi pestkami słonecznika.' },
+        { name: 'Sałatka z Kozim Serem', price: '36 PLN', desc: 'Karmelizowany kozi ser, pieczony burak, rukola, orzechy włoskie, sos miodowo-balsamiczny.' },
+        { name: 'Deska Serów & Wędlin Rzemieślniczych', price: '45 PLN', desc: 'Wybór długodojrzewających serów, szynka dojrzewająca, oliwki, domowa konfitura z figi.' }
+      ]
+    },
+    {
+      category: 'DANIA GŁÓWNE',
+      items: [
+        { name: 'Polędwiczki w Sosie Borowikowym', price: '49 PLN', desc: 'Delikatna polędwiczka wieprzowa, sos z leśnych borowików, kopytka maślane, buraczki.' },
+        { name: 'Tagliatelle z Pesto & Łososiem', price: '46 PLN', desc: 'Świeży makaron, kawałki grillowanego łososia, pomidorki koktajlowe, parmezan.' },
+        { name: 'Pieczona Pierś z Kaczki', price: '56 PLN', desc: 'Pierś z kaczki sous-vide, purée z dyni, sos żurawinowo-pomarańczowy, pieczone jabłko.' },
+        { name: 'Burger Stacja Gastronomia', price: '42 PLN', desc: 'Soczysta 100% wołowina, ser cheddar, bekon, karmelizowana cebula, sos autorski, frytki.' },
+        { name: 'Stek z Sezonowanego Antrykotu (300g)', price: '89 PLN', desc: 'Marmurkowy stek wołowy z masłem ziołowym, pieczonymi ziemniakami i warzywami z grilla.' },
+        { name: 'Risotto z Leśnymi Grzybami (VEGE)', price: '42 PLN', desc: 'Kremowe risotto na bazie borowików, podane z oliwą truflową i wiórkami parmezanu.' }
+      ]
+    },
+    {
+      category: 'CATERING & ZESTAWY BIZNESOWE',
+      items: [
+        { name: 'Zestaw Finger Food (Bankiet)', price: 'od 45 PLN/os.', desc: 'Miniburgery, tartaletki wytrawne, roladki z łososiem, szaszłyczki caprese, autorskie dipy.' },
+        { name: 'Zestaw Lunch Biznesowy', price: '34 PLN/zestaw', desc: 'Zupa dnia + danie główne (opcja mięsna lub wegetariańska) dostarczane gorące do firm.' },
+        { name: 'Przerwa Kawowa Premium (Firmowa)', price: 'od 28 PLN/os.', desc: 'Kawa z ekspresu, herbata rzemieślnicza, ciastka maślane, mini deserki w pucharach, soki tłoczone.' },
+        { name: 'Catering Okolicznościowy (Bufet Gorący)', price: 'od 75 PLN/os.', desc: 'Pełny ciepły i zimny bufet na urodziny, chrzciny, komunie oraz jubileusze firmowe.' }
+      ]
+    },
+    {
+      category: 'DESERY & NAPOJE',
+      items: [
+        { name: 'Sernik Nowojorski z Malinami', price: '22 PLN', desc: 'Kremowy sernik na kruchym spodzie maślanym z domowym musem malinowym.' },
+        { name: 'Fondant Czekoladowy', price: '24 PLN', desc: 'Ciepłe ciastko z płynną gorzką czekoladą Callebaut i gałką lodów waniliowych.' },
+        { name: 'Tarta Cytrynowa z Bezą Włoską', price: '20 PLN', desc: 'Chrupiący spód kruchy, orzeźwiający krem lemon curd, przypalana beza.' },
+        { name: 'Kawa Espresso / Cappuccino / Latte', price: '10-16 PLN', desc: 'Świeżo palona 100% Arabica z lokalnej palarni.' },
+        { name: 'Herbata Rzemieślnicza (Dzbanek 400ml)', price: '14 PLN', desc: 'Wybór herbat czarnych, zielonych, owocowych oraz ziołowych.' }
+      ]
+    }
+  ];
+
+  function renderFullMenu() {
+    listContainer.innerHTML = fullMenuData.map(cat => `
+      <div class="modal-menu-category" style="margin-bottom: 28px;">
+        <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-accent); border-bottom: 1px dashed var(--color-light-border); padding-bottom: 6px; margin-bottom: 14px; letter-spacing: 0.05em;">
+          ${cat.category}
+        </h4>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          ${cat.items.map(item => `
+            <div class="modal-dish-item" style="display: flex; flex-direction: column; gap: 4px;">
+              <div class="modal-dish-name" style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.98rem; color: var(--color-light-text);">
+                <span>${item.name}</span>
+                <span style="color: var(--color-accent); font-weight: 600; white-space: nowrap; margin-left: 12px;">${item.price}</span>
+              </div>
+              <p class="modal-dish-desc" style="font-size: 0.84rem; color: var(--color-light-muted); margin: 0; font-weight: 300;">${item.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openFullMenu() {
+    renderFullMenu();
+    modal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFullMenu() {
+    modal.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openFullMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeFullMenu);
+  if (actionCloseBtn) actionCloseBtn.addEventListener('click', closeFullMenu);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeFullMenu();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+      closeFullMenu();
+    }
+  });
 }
 
 /* --- 5. PRZYCISK SCROLL TO TOP --- */
